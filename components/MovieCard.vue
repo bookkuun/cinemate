@@ -13,7 +13,7 @@ const changeItemState = (item) => {
   <div
     class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
   >
-    <NuxtLink :to="`/item/${title}`" @click="changeItemState">
+    <NuxtLink :to="`/item/${title}`" @click="changeItemState(item)">
       <img
         class="rounded-t-lg"
         :src="`${imageSiteUrl}${poster_path}`"
