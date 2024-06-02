@@ -1,3 +1,58 @@
-<script setup></script>
+<script setup>
+const movies = useState(() => []);
+const series = useState(() => []);
 
-<template></template>
+const { data } = await useFetch("/api/movies/toprated", {
+  transform: (data) => {
+    movies.value = data.topRatedMovies.results;
+    series.value = data.topRatedSeries.results;
+  },
+});
+</script>
+
+<template>
+  <div>
+    <section>
+      <h1
+        class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
+      >
+        Top rated Movies
+      </h1>
+
+      <ul class="grid grid-cols-5 gap">
+        <li v-for="mov in movies">
+          <MovieCard
+            :poster_path="mov.poster_path"
+            :title="mov.title"
+            :id="mov.id"
+            :overview="mov.overview"
+            :release_date="mov.release_date"
+            :popularity="mov.popularity"
+            :item="mov.item"
+          />
+        </li>
+        <br /><br />
+      </ul>
+    </section>
+    <section>
+      <h1
+        class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
+      >
+        Top rated TV Series
+      </h1>
+      <ul class="grid grid-cols-5 gap">
+        <li v-for="tvSeries in series">
+          <SeriesCard
+            :poster_path="tvSeries.poster_path"
+            :name="tvSeries.name"
+            :overview="tvSeries.overview"
+            :first_air_date="tvSeries.first_air_date"
+            :popularity="tvSeries.popularity"
+            :item="tvSeries"
+          />
+        </li>
+        <br /><br />
+      </ul>
+    </section>
+  </div>
+</template>
