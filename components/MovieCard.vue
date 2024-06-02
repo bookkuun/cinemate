@@ -1,5 +1,13 @@
 <script setup>
-defineProps(["title", "id", "overview", "release_date", "popularity", "item"]);
+defineProps([
+  "title",
+  "id",
+  "overview",
+  "release_date",
+  "popularity",
+  "poster_path",
+  "item",
+]);
 
 const imageSiteUrl = "https://image.tmdb.org/t/p/w500";
 
@@ -33,11 +41,13 @@ const changeItemState = (item) => {
       </p>
       <p
         v-if="overview"
-        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      ></p>
+        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-white-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        {{ overview }}
+      </p>
       <p
         v-else
-        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-black bg-white-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
       >
         No overview
       </p>
