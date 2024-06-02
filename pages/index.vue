@@ -28,7 +28,7 @@ const { data } = await useFetch("/api/movies/discover", {
             :overview="mov.overview"
             :release_date="mov.release_date"
             :popularity="mov.popularity"
-            :item="mov.item"
+            :item="mov"
           />
         </li>
         <br /><br />

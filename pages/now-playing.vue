@@ -25,7 +25,7 @@ const { data } = useFetch("/api/movies/nowplaying", {
             :overview="mov.overview"
             :release_date="mov.release_date"
             :popularity="mov.popularity"
-            :item="mov.item"
+            :item="mov"
           />
         </li>
         <br /><br />
